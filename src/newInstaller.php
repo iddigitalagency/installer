@@ -1,12 +1,12 @@
 <?php
 
-namespace Jai\Installer\Console;
+namespace Iddigital\Installer\Console;
 
 use ZipArchive;
 use RuntimeException;
 use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Command\Command; //https://packagist.org/packages/symfony/console
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -53,12 +53,8 @@ class NewInstaller extends Command
         // If composer  run composer commands
         $composer = $this->findComposer();
 
-        $commands = [
-            $composer.' run-script post-root-package-install',
-            $composer.' run-script post-install-cmd',
-            $composer.' run-script post-create-project-cmd',
-        ];
-
+        $commands = [ $composer.' run-script post-root-package-install'];
+       // Using Symphony Process //https://packagist.org/packages/symfony/process
         $process = new Process(implode(' && ', $commands), $directory, null, null, null);
 
         $process->run(function ($type, $line) use ($output) {
@@ -88,7 +84,7 @@ class NewInstaller extends Command
      */
     protected function makeFilename()
     {
-        return getcwd().'/jai'.md5(time().uniqid()).'.zip';
+        return getcwd().'/iddigital'.md5(time().uniqid()).'.zip';
     }
 
     /**

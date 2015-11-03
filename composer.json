@@ -1,9 +1,9 @@
 {
-    "name": "jai/installer",
+    "name": "iddigital/installer",
     "description": "application installer.",
 "autoload": {
     "psr-4": {
-        "Jai\\Installer\\Console\\": "src/"
+        "Iddigital\\Installer\\Console\\": "src/"
     }
 },
 "require": {
@@ -12,6 +12,6 @@
     "symfony/process": "~2.3"
 },
 "bin": [
-    "Jai"
+    "Iddigital"
 ]
 }
